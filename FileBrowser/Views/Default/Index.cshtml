@@ -1,0 +1,33 @@
+﻿<script type="text/javascript">
+    $(function () {
+        // Initialize the jquery-ui dialog
+        $('#fileBrowser').dialog({
+            dialogClass: "no-close",
+            resizable: false,
+            draggable: false,
+            closeOnEscape: false,
+            width: $(window).width(),
+            height: $('#dialogContainer').height(),
+            top: '75px',
+            left: '0px'
+        });
+
+        // when the window resizes, adjust the size and position of the dialog to match
+        $(window).resize(function (e) {
+            $('.ui-dialog').css({
+                width: $(window).width(),
+                height: $('#dialogContainer').height(),
+                top: '75px',
+                left: '0px'
+            });
+        });
+    });
+
+</script>
+<div class="container-fluid" style="padding:0px;">
+    <div class="row" id="dialogContainer" style="min-height:720px; margin:0px;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"  style="padding:0px;">
+            @Html.Partial("_FileBrowser")
+        </div>
+    </div>
+</div>

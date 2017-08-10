@@ -1,0 +1,64 @@
+﻿<div id="fileBrowser" class="panel panel-default" style="margin-top:20px;" title="Web Server File Managment">
+    <div class="panel-heading">
+        <div class="container-fluid" style="padding:0px;">
+            <div class="row" style="margin:0px;" id="filterMenu">
+                <div class="col-xs-5" style="padding:0px;">
+                    <div style="padding-bottom:5px;">
+                        <span class="btn btn-default btn-xs glyphicon glyphicon-arrow-up" title="Move up one directory" data-bind="click: DirectoryUp"></span>&nbsp;Directory:
+                    </div>
+                    <input class="form-control" type="search" data-bind="value: Directory" style="width:90%;" placeholder="Enter Directory Path" />
+                </div>
+                <div class="col-xs-5" style="padding:0px;">
+                    <div style="padding-bottom:5px;">Search:</div>
+                    <input class="form-control" type="search" data-bind="value: Filter" style="width:90%;" placeholder="Enter Search Terms (File name, extension, date, etc.)" />
+                </div>
+                <div class="col-xs-2" style="padding:0px;">
+                    <div>Submit:</div>
+                    <div class="btn btn-success glyphicon glyphicon-arrow-right" style="min-width:50px;" data-bind="click: GetFiles"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" style="min-height:400px;">
+        <div class="table-responsive">
+            <table class="table table-condensed table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <div><b>Statistics:</b></div>
+                            <div style="padding-top: 7px; padding-bottom:7px;">
+                                File(s): <span data-bind="text: TotalFiles"></span> |
+                                Folder(s): <span data-bind="text: TotalFolders"></span> |
+                                Size(Kb): <span data-bind="text: TotalSize"></span>
+                            </div>
+                        </th>
+                        <th colspan="6">
+                            <span><b>File Upload:</b></span>
+                            <input class="form-control" type="file" data-bind="event: { change: function() { Upload($element.files[0]) }}" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="background-color:#93cc93;">Name</th>
+                        <th style="background-color:#93cc93;">Last Modified</th>
+                        <th style="background-color:#93cc93;">Type</th>
+                        <th style="background-color:#93cc93;">Size(Kb)</th>
+                        <th style="background-color:#93cc93;"></th>
+                        <th style="background-color:#93cc93;"></th>
+                        <th style="background-color:#93cc93;"></th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Files">
+                    <tr>
+                        <td data-bind="text: name, click: $parent.FolderClick" style="cursor:pointer;"></td>
+                        <td data-bind="text: date"></td>
+                        <td data-bind="text: type"></td>
+                        <td data-bind="text: size"></td>
+                        <td><a href="#" data-bind="click: $parent.Copy">Copy</a></td>
+                        <td><a href="#" data-bind="click: $parent.Move">Move</a></td>
+                        <td><a href="#" data-bind="click: $parent.Delete">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

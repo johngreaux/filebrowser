@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>File Browser</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/jquery-ui")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="container-fluid">
+        <header>
+            @Html.Partial("_Header")
+        </header>
+        @RenderBody()
+        <footer>
+            @Html.Partial("_Footer")
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/filebrowser")
+</body>
+</html>
